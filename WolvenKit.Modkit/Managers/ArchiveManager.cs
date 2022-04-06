@@ -241,6 +241,12 @@ namespace WolvenKit.RED4.CR2W.Archive
             }
 
             var archive = _wolvenkitFileService.ReadRed4Archive(filename, _hashService);
+
+            if (archive == null)
+            {
+                _logger.Error($"Couldn't load ${filename}");
+                return;
+            }
             ModArchives.AddOrUpdate(archive);
         }
 
